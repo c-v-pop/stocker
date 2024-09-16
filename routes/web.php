@@ -18,8 +18,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    Route::get('/stock', [StockController::class,'store'])->name('');
-    Route::post('/stock', [StockController::class,''])->name('');
+    Route::get('/stock', [StockController::class, 'index'])->name('stock.index');  // GET for stock view
+    Route::post('/stock', [StockController::class, 'store'])->name('stock.store');  // POST for storing stock data
 });
 
 require __DIR__.'/auth.php';
