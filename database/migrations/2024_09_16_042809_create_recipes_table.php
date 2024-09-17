@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('recipes', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->integer('quantity')->default(1);
             $table->string('')->nullable();
             $table->timestamps();
         });

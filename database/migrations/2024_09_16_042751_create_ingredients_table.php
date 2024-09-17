@@ -12,10 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('ingredients', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('')->nullable();
-            $table->timestamps();
+            $table->id();  // Primary key
+            $table->string('name')->unique();  // Name of the ingredient, unique constraint added
+            $table->integer('quantity')->default(0);  // Quantity of the ingredient, default to 0
+            $table->string('description')->nullable();  // Description of the ingredient, optional
+            $table->timestamps();  // created_at and updated_at timestamps
         });
     }
 
