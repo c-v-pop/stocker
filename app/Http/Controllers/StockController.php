@@ -17,14 +17,25 @@ class StockController extends Controller
     // Store new stock data
     public function store(Request $request)
     {
+        // Validate the request
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
-            'quantity' => 'required|numeric|min:1',
+            'quantity'=> 'required|integer|min:1',
         ]);
 
-        Ingredient::create($validatedData);
+        // Use firstOrCreate to avoid duplicates
+        $ingredient = Ingredient::firstOrCreate(
+            ['name' => $validatedData['name']], // Check for uniqueness on 'name'
+            ['quantity' => $validatedData['quantity']]
+        );
 
-        return redirect()->route('stock.index')->with('success', 'Stock item added!');
+        // Optionally update the quantity if ingredieng exists
+        if (!$ingredient->wasRecentlyCreated) {
+            $ingredient->quantity += $validatedData['quantity'];
+            $ingredient->save();
+        }
+
+        return redirect()->route('stock.index')->with('success','Ingredient added successfully');
     }
 
     // Update an existing stock item

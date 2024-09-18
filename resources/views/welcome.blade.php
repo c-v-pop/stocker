@@ -18,7 +18,7 @@
 <body class="font-sans antialiased dark:bg-black dark:text-white/50">
     <div class="flex justify-center mt-6">
         <div class="flex flex-col text-center">
-            <h1>Use this someway</h1>
+            <h1>Ingredients in stock</h1>
         @if($ingredients->isEmpty())
         <p>No stock items available.</p>
         @else
@@ -28,7 +28,12 @@
             @endforeach
         </ul>
         @endif
-        <a href="/stock" class="text-white">Add Ingredients</a>
+        <div class="mt-6">
+            <a href="/stock" class="text-white"><p>Add Ingredients</p></a>
+            <a href="#">
+                <p class="text-white">Generate Recipe</p>
+            </a>
+        </div>
         </div>
     </div>
 </body>

@@ -1,4 +1,8 @@
-    <h1>Stock List</h1>
+<head>
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+</head>
+    <div class="flex justify-center">
+        <h1>Stock List</h1>
     @if(session('success'))
         <p>{{ session('success') }}</p>
     @endif
@@ -17,3 +21,4 @@
         <button type="submit">Add to Stock</button>
         <button><a href="/">View Stock</a></button>
     </form>
+    </div>
