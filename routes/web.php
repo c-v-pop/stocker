@@ -28,6 +28,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/stock', [StockController::class, 'index'])->name('stock.index');  // GET to show the stock page
     Route::post('/stock', [StockController::class, 'store'])->name('stock.store');  // POST to store new stock
     Route::patch('/stock/{ingredient}', [StockController::class, 'update'])->name('stock.update');  // PATCH for updating stock
+    Route::delete('/stock/{ingredient}', [StockController::class, 'destroy'])->name('stock.destroy');
 });
 
 require __DIR__.'/auth.php';

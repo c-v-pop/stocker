@@ -50,5 +50,14 @@ class StockController extends Controller
 
         return redirect()->route('stock.index')->with('success', 'Stock item updated!');
     }
+
+    public function destroy(Ingredient $ingredient)
+    {
+        // Delete Ingredient
+        $ingredient->delete();
+
+        return redirect()->route('stock.index')->with('success', 'Ingredient deleted successfully');
+    }
+
 }
 
