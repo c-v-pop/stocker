@@ -20,10 +20,10 @@
     <!-- Form to add new stock -->
     <form action="{{ route('stock.store') }}" method="POST" class="flex flex-col gap-6">
         @csrf
-        <input type="text" name="name" placeholder="Ingredient Name" required>
-        <input type="number" name="quantity" placeholder="Quantity" required>
+        <input type="text" name="name" placeholder="Ingredient Name" required class="text-black">
+        <input type="number" name="quantity" placeholder="Quantity" required class="text-black">
         <button type="submit" class="hover:bg-green-500 duration-300 opacity-25 hover:opacity-100">Add to Stock</button>
-        <button  class="hover:bg-green-500 duration-300 opacity-25 hover:opacity-100"><a href="/">View Stock</a></button>
+        <button class="hover:bg-green-500 duration-300 opacity-25 hover:opacity-100" onclick="window.location.href='/'">Recipe Generator</button>
     </form>
     </div>
 </body>

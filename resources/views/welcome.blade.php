@@ -17,15 +17,15 @@
     </style>
 </head>
 <body class="font-sans antialiased dark:bg-black dark:text-white/50">
-    <div class="flex justify-center mt-6">
+    <div class="flex justify-center my-[30vh]">
         <div class="flex flex-col text-center gap-6">
             <h1>Ingredients in stock</h1>
             @if($ingredients->isEmpty())
             <p>No stock items available.</p>
             @else
-            <ul class="uppercase">
+            <ul>
                 @foreach($ingredients as $ingredient)
-                <li class="mb-4">
+                <li class="mb-4 capitalize">
                     {{ $ingredient->name }} - Quantity: {{ $ingredient->quantity }}
                     <!-- Delete Button Form -->
                     <form action="{{ route('stock.destroy', $ingredient->id) }}" method="POST" class="inline-block">
