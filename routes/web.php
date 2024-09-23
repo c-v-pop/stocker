@@ -1,5 +1,6 @@
 <?php
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\StockController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Ingredient;  // You need this to fetch ingredients for the welcome page
@@ -29,6 +30,10 @@ Route::middleware('auth')->group(function () {
     Route::post('/stock', [StockController::class, 'store'])->name('stock.store');  // POST to store new stock
     Route::patch('/stock/{ingredient}', [StockController::class, 'update'])->name('stock.update');  // PATCH for updating stock
     Route::delete('/stock/{ingredient}', [StockController::class, 'destroy'])->name('stock.destroy');
+
+    Route::post('/generate-random-recipe', [RecipeController::class, 'generateRandomRecipe'])->name('generate.random.recipe');
+
+    Route::get('/recipes/{recipe}', [RecipeController::class, 'show'])->name('recipes.show');
 });
 
 require __DIR__.'/auth.php';

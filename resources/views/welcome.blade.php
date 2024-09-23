@@ -49,6 +49,12 @@
                     <p>Generate Recipe</p>
                 </a>
             </div>
+            <form action="{{ route('generate.random.recipe') }}" method="POST">
+                @csrf
+                <button type="submit" class="bg-blue-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+                    Generate Random Recipe
+                </button>
+            </form>
         </div>
     </div>
 </body>
