@@ -6,14 +6,14 @@
 </head>
 <body class="bg-black">
     <div class="flex text-white flex-col items-center gap-6 mt-[30vh] bg-slate-700 w-1/3 mx-auto my-auto rounded-md">
-        <h1>Stock List</h1>
+        <h1 class="mt-6">Stock List</h1>
     @if(session('success'))
         <p>{{ session('success') }}</p>
     @endif
 
     <ul>
         @foreach($ingredients as $ingredient)
-            <li>{{ $ingredient->name }} - {{ $ingredient->quantity }}</li>
+            <li class="capitalize">{{ $ingredient->name }} - {{ $ingredient->quantity }}</li>
         @endforeach
     </ul>
 
@@ -23,7 +23,7 @@
         <input type="text" name="name" placeholder="Ingredient Name" required class="text-black">
         <input type="number" name="quantity" placeholder="Quantity" required class="text-black">
         <button type="submit" class="hover:bg-green-500 duration-300 opacity-25 hover:opacity-100">Add to Stock</button>
-        <button class="hover:bg-green-500 duration-300 opacity-25 hover:opacity-100" onclick="window.location.href='/'">Recipe Generator</button>
+        <button class="hover:bg-green-500 duration-300 opacity-25 hover:opacity-100 mb-6" onclick="window.location.href='/'">Recipe Generator</button>
     </form>
     </div>
 </body>
