@@ -17,21 +17,21 @@
     </style>
 </head>
 <body class="font-sans antialiased dark:bg-black dark:text-white/50">
-    <div class="flex justify-center my-[30vh]">
-        <div class="flex flex-col text-center gap-6">
+    <div class="flex justify-center my-[25vh]">
+        <div class="flex flex-col text-center gap-6 bg-slate-700 p-6 rounded-md text-white font-bold">
             <h1>Ingredients in stock</h1>
             @if($ingredients->isEmpty())
             <p>No stock items available.</p>
             @else
-            <ul>
+            <ul class="py-8">
                 @foreach($ingredients as $ingredient)
-                <li class="mb-4 capitalize">
+                <li class="mb-4 capitalize font-bold">
                     {{ $ingredient->name }} - Quantity: {{ $ingredient->quantity }}
                     <!-- Delete Button Form -->
                     <form action="{{ route('stock.destroy', $ingredient->id) }}" method="POST" class="inline-block">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="text-red-300 hover:text-red-800">Delete</button>
+                        <button type="submit" class="text-red-200 hover:text-red-500 duration-300">Delete</button>
                     </form>
                 </li>
                 @endforeach
@@ -43,15 +43,25 @@
             @endif
             
             @endif
-            <div class="mt-6 flex gap-6">
+            <div class="mt-6 flex gap-6 justify-center items-center">
                 <a href="/stock" class="text-white hover:text-green-600 duration-200"><p>Add Ingredients</p></a>
-                <a href="#" class="hover:text-green-600 text-white duration-200">
-                    <p>Generate Recipe</p>
-                </a>
             </div>
+            @if(isset($recipe))
+    <h1>{{ $recipe->name }}</h1>
+    
+    <h3>Ingredients</h3>
+    <ul>
+        @foreach($recipe->ingredients as $ingredient)
+            <li>{{ $ingredient->name }} ({{ $ingredient->pivot->quantity }})</li>
+        @endforeach
+    </ul>
+
+    <h3>Instructions</h3>
+    <p>{{ $recipe->instructions }}</p>
+@endif
             <form action="{{ route('generate.random.recipe') }}" method="POST">
                 @csrf
-                <button type="submit" class="bg-blue-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+                <button type="submit" class="bg-blue-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded duration-300">
                     Generate Random Recipe
                 </button>
             </form>

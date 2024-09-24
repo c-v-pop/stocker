@@ -5,7 +5,7 @@
     </style>
 </head>
 <body class="bg-black">
-    <div class="flex text-white flex-col items-center gap-6 mt-[30vh] bg-slate-700 w-1/3 mx-auto my-auto rounded-md">
+    <div class="flex text-white flex-col items-center gap-6 mt-[30vh] bg-slate-700 mx-auto my-auto rounded-md  w-1/5">
         <h1 class="mt-6">Stock List</h1>
     @if(session('success'))
         <p>{{ session('success') }}</p>
