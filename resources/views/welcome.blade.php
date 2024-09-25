@@ -62,10 +62,8 @@
             @endforeach
         </ul>
         
-        <h3>Instructions</h3>
-        <p>{{ $recipeToShow->instructions }}</p>
         @else
-        <p>No recipe generated yet. Click the button to generate a random recipe.</p>
+        <p>No recipe generated yet.</p>
         @endif
         
         <form action="{{ route('generate.random.recipe') }}" method="POST">

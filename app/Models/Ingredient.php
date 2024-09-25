@@ -25,12 +25,9 @@ class Ingredient extends Model
     {
         // Fetch available ingredients
         $ingredients = Ingredient::all(); // Assuming you have an Ingredient model
-        
-        // Define the instructions
-        $instructions = "Please choose your ingredients for the recipe:";
-        
+          
         // Pass ingredients and instructions to the view
-        return view('ingredients', compact('ingredients', 'instructions'));
+        return view('ingredients', compact('ingredients'));
     }
     
 }
