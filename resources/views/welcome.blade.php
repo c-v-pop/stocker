@@ -44,28 +44,36 @@
             
             @endif
             <div class="mt-6 flex gap-6 justify-center items-center">
-                <a href="/stock" class="text-white hover:text-green-600 duration-200"><p>Add Ingredients</p></a>
+                <a href="/stock" class="text-white hover:text-green-600 duration-200"><p>Update Stock</p></a>
             </div>
-            @if(isset($recipe))
-    <h1>{{ $recipe->name }}</h1>
-    
-    <h3>Ingredients</h3>
-    <ul>
-        @foreach($recipe->ingredients as $ingredient)
-            <li>{{ $ingredient->name }} ({{ $ingredient->pivot->quantity }})</li>
-        @endforeach
-    </ul>
-
-    <h3>Instructions</h3>
-    <p>{{ $recipe->instructions }}</p>
-@endif
-            <form action="{{ route('generate.random.recipe') }}" method="POST">
-                @csrf
-                <button type="submit" class="bg-blue-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded duration-300">
-                    Generate Random Recipe
-                </button>
-            </form>
         </div>
+        <div class="flex flex-col text-center gap-6 bg-slate-700 p-6 rounded-md text-white font-bold ml-6">
+        @if(isset($recipe) || isset($randomRecipe))
+        @php
+        $recipeToShow = isset($recipe) ? $recipe : $randomRecipe;
+        @endphp
+        
+        <h1>{{ $recipeToShow->name }}</h1>
+        
+        <h3>Ingredients</h3>
+        <ul>
+            @foreach($recipeToShow->ingredients as $ingredient)
+            <li>{{ $ingredient->name }} ({{ $ingredient->pivot->quantity }})</li>
+            @endforeach
+        </ul>
+        
+        <h3>Instructions</h3>
+        <p>{{ $recipeToShow->instructions }}</p>
+        @else
+        <p>No recipe generated yet. Click the button to generate a random recipe.</p>
+        @endif
+        
+        <form action="{{ route('generate.random.recipe') }}" method="POST">
+            @csrf
+            <button type="submit" class="bg-blue-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded duration-300">
+                Generate Random Recipe
+            </button>
+        </form>
     </div>
-</body>
-</html>
+    </body>
+    </html>
