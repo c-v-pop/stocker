@@ -17,13 +17,13 @@
     </style>
 </head>
 <body class="font-sans antialiased dark:bg-black dark:text-white/50">
-    <div class="flex justify-center my-14">
-        <div class="flex flex-col text-center gap-6 bg-slate-700 p-6 rounded-md text-white font-bold">
+    <div class="flex justify-center my-14 sm:flex-col lg:flex-row items-center">
+        <div class="flex flex-col text-center gap-6 bg-slate-700 p-6 rounded-md text-white font-bold m-8">
             <h1>Ingredients in stock</h1>
             @if($ingredients->isEmpty())
             <p>No stock items available.</p>
             @else
-            <ul class="py-8">
+            <ul class="flex flex-col">
                 @foreach($ingredients as $ingredient)
                 <li class="mb-4 capitalize font-bold">
                     {{ $ingredient->name }} - Quantity: {{ $ingredient->quantity }}
@@ -47,7 +47,7 @@
                 <a href="/stock" class="text-white hover:text-green-600 duration-200"><p>Update Stock</p></a>
             </div>
         </div>
-        <div class="flex flex-col text-center gap-6 bg-slate-700 p-6 rounded-md text-white font-bold ml-6">
+        <div class="flex flex-col text-center gap-6 bg-slate-700 p-6 rounded-md text-white font-bold m-8">
             @if(isset($recipe) || isset($randomRecipe))
             @php
             $recipeToShow = isset($recipe) ? $recipe : $randomRecipe;
