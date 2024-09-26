@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('recipe_id')->constrained()->onDelete('cascade'); // This Makes a foreign Key for recipe_id
             $table->foreignId('ingredient_id')->constrained()->onDelete('cascade'); // This makes a foreign Key for ingredient
+            $table->integer('amount')->nullable();
             $table->integer('quantity')->nullable();
             $table->timestamps();
         });
@@ -23,8 +24,10 @@ return new class extends Migration
     /**
      * Reverse the migrations.
      */
-    public function down(): void
+    public function down(): void 
     {
-        Schema::dropIfExists('recipe_ingredient_table');
+        Schema::table('recipe_ingredient_table', function (Blueprint $table) {
+            $table->dropColumn('amount');
+        });
     }
 };

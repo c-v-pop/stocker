@@ -17,7 +17,7 @@
     </style>
 </head>
 <body class="font-sans antialiased dark:bg-black dark:text-white/50">
-    <div class="flex justify-center mt-28">
+    <div class="flex justify-center my-14">
         <div class="flex flex-col text-center gap-6 bg-slate-700 p-6 rounded-md text-white font-bold">
             <h1>Ingredients in stock</h1>
             @if($ingredients->isEmpty())
