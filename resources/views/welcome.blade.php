@@ -17,7 +17,7 @@
     </style>
 </head>
 <body class="font-sans antialiased dark:bg-black dark:text-white/50">
-    <div class="flex justify-center my-[25vh]">
+    <div class="flex justify-center mt-28">
         <div class="flex flex-col text-center gap-6 bg-slate-700 p-6 rounded-md text-white font-bold">
             <h1>Ingredients in stock</h1>
             @if($ingredients->isEmpty())
@@ -48,30 +48,35 @@
             </div>
         </div>
         <div class="flex flex-col text-center gap-6 bg-slate-700 p-6 rounded-md text-white font-bold ml-6">
-        @if(isset($recipe) || isset($randomRecipe))
-        @php
-        $recipeToShow = isset($recipe) ? $recipe : $randomRecipe;
-        @endphp
-        
-        <h1>{{ $recipeToShow->name }}</h1>
-        
-        <h3>Ingredients</h3>
-        <ul>
-            @foreach($recipeToShow->ingredients as $ingredient)
-            <li>{{ $ingredient->name }} ({{ $ingredient->pivot->quantity }})</li>
-            @endforeach
-        </ul>
-        
-        @else
-        <p>No recipe generated yet.</p>
-        @endif
-        
-        <form action="{{ route('generate.random.recipe') }}" method="POST">
-            @csrf
-            <button type="submit" class="bg-blue-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded duration-300">
-                Generate Random Recipe
-            </button>
-        </form>
-    </div>
+            @if(isset($recipe) || isset($randomRecipe))
+            @php
+            $recipeToShow = isset($recipe) ? $recipe : $randomRecipe;
+            @endphp
+            
+            <h1>{{ $recipeToShow->name }}</h1>
+            
+            <h2>Ingredients:</h2>
+            @if($recipeToShow->ingredients->isNotEmpty())
+            <ul class="capitalize">
+                @foreach($recipeToShow->ingredients as $ingredient)
+                <li>{{ $ingredient->name }}</li>
+                @endforeach
+            </ul>
+            @else
+            <p>No ingredients for this recipe.</p>
+            @endif
+            
+            
+            @else
+            <p>No recipe generated yet.</p>
+            @endif
+            
+            <form action="{{ route('generate.random.recipe') }}" method="POST" class="mt-auto">
+                @csrf
+                <button type="submit" class="bg-blue-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded duration-300">
+                    Generate Random Recipe
+                </button>
+            </form>
+        </div>
     </body>
     </html>

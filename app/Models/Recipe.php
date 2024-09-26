@@ -23,7 +23,7 @@ class Recipe extends Model
             'cooking_time' => rand(10, 120),
         ]);
 
-        $ingredients = Ingredient::inRandomOrder()->limit(rand(2, 5))->get(); // Select between  2 and 5 Ingredients
+        $ingredients = Ingredient::inRandomOrder()->limit(rand(5, 10))->get(); // Select between  2 and 5 Ingredients
 
         // Attach Ingredients with pivot table 
 
