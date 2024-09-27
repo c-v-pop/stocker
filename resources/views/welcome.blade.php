@@ -57,14 +57,16 @@
             
             <h2>Ingredients:</h2>
             @if($recipeToShow->ingredients->isNotEmpty())
-            <ul class="capitalize">
-                @foreach($recipeToShow->ingredients as $ingredient)
-                <li>{{ $ingredient->name }}</li>
-                @endforeach
-            </ul>
+                <ul class="capitalize">
+                    @foreach($recipeToShow->ingredients as $ingredient)
+                    <li>{{ $ingredient->name }} - {{ rand(1, 5) }}</li>
+                    @endforeach
+                </ul>
             @else
-            <p>No ingredients for this recipe.</p>
+                <p>No ingredients for this recipe.</p>
             @endif
+            
+
             
             
             @else
