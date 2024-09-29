@@ -15,3 +15,16 @@
     <li>User account creation/edit</li>
     <li>Authentication and Validation</li>
 </ul>
+
+<h2>Installation</h2>
+
+<ol>
+    <li>Clone the repository</li>
+    <li>Navigate to project directory</li>
+    <li>Install Composer dependencies running "composer install"</li>
+    <li>Install NPM dependencies "npm install"</li>
+    <li>Rename the .env file and configure your database</li>
+    <li>Migrate the database "php artisan migrate"</li>
+    <li>Start The Laravel development server "php artisan serve"</li>
+    <li>Compile assets with "npm run dev"</li>
+</ol>
