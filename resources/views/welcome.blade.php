@@ -66,7 +66,19 @@
                 <p>No ingredients for this recipe.</p>
             @endif
             
+            <h2>Instructions:</h2>
+            @if($recipeToShow->instructions->isNotEmpty())
+                <ul>
+                    @foreach($recipeToShow->instructions as $instruction)
+                    <li>{{ $instruction->step }}</li> <!-- description -->
+                    @endforeach
+                </ul>
+            @else
+                <p>No instructions for this recipe.</p>
+            @endif
+             
 
+            Working on this !!!
             
             
             @else
