@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Recipe extends Model
 {
@@ -14,6 +14,11 @@ class Recipe extends Model
     protected $fillable = ['name', 'description', 'cooking_time'];
 
     // Relationships
+
+    public function instructions(): HasMany
+    {
+        return $this->hasMany(Instruction::class);
+    }
 
     public static function generateRandomRecipe()
     {

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ingredient;
+use App\Models\Instruction;
 use App\Models\Recipe;
 use Illuminate\Http\Request;
 
@@ -19,14 +20,19 @@ class RecipeController extends Controller
 
         $ingredients = Ingredient::all();
 
+        $instructions = Instruction::all();
+
         // Pass random recipe and ingredient to view
         return view('welcome', compact('randomRecipe', 'ingredients'));
     }
 
     public function show(Recipe $recipe)
     {
-        $recipe->load('ingredients');
+    // Load both the ingredients and instructions for the recipe
+    $recipe->load(['ingredients', 'instructions']);
 
-        return view('recipes.show', compact('recipe'));
+    // Return the view and pass the $recipe variable
+    return view('recipes.show', compact('recipe'));
     }
+    
 }

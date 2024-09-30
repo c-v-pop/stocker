@@ -3,8 +3,8 @@
 namespace Database\Seeders;
 
 use App\Models\Instruction;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Faker\Factory as Faker; // Import Faker for generating random steps
 
 class InstructionsTableSeeder extends Seeder
 {
@@ -13,16 +13,15 @@ class InstructionsTableSeeder extends Seeder
      */
     public function run(): void
     {
-        Instruction::create([
-            'recipe_id' => 1,
-            'step' => 'Preheat the oven to 350C',
-            'step_number' => 1,
-        ]);
+        $faker = Faker::create(); // Create a Faker instance
 
-        Instruction::create([
-            'recipe_id' => 1,
-            'step' => 'Mix flour and sugar',
-            'step_number' => 2,
-        ]);
+        // Loop to create 50 instructions
+        for ($i = 0; $i < 50; $i++) {
+            Instruction::create([
+                'recipe_id' => rand(1, 80), // Random recipe_id between 1 and 80
+                'step' => $faker->sentence(), // Generate a random instruction step
+                'step_number' => $i + 1, // Incrementing step number
+            ]);
+        }
     }
 }

@@ -17,7 +17,6 @@ return new class extends Migration
             $table->foreignId('ingredient_id')->constrained()->onDelete('cascade'); // This makes a foreign Key for ingredient
             $table->integer('amount')->nullable();
             $table->integer('quantity')->nullable();
-            $table->text('instructions')->nullable();
             $table->timestamps();
         });
     }

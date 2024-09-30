@@ -27,7 +27,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     // Recipe routes
     Route::post('/generate-random-recipe', [RecipeController::class, 'generateRandomRecipe'])->name('generate.random.recipe');
+
     Route::get('/recipes/{recipe}', [RecipeController::class, 'show'])->name('recipes.show');
+
 });
 
 require __DIR__.'/auth.php';
